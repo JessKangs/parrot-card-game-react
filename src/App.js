@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import SingleCard from './SingleCard';
 import cardsImages from './cards';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -23,6 +23,37 @@ function App() {
     
   }
 
+  useEffect(() => {
+
+    if(choiceOne && choiceTwo) {
+
+      if (choiceOne.src === choiceTwo.src) {
+        setCards(prevCards => {
+          return prevCards.map(card => {
+            if(card.src === choiceOne.src) {
+              return {...card, matched: true}
+            } else {
+              return card
+            }
+          })
+        })
+
+        resetTurns()
+
+      } else {
+        setTimeout(resetTurns, 1500)
+      }  
+  }
+  }, [choiceOne, choiceTwo])
+
+
+  const resetTurns = () => {
+
+    setChoiceOne(null)
+    setChoiceTwo(null)
+    setTurns(prevTurns => prevTurns + 1)
+  }
+
   return (
     <Content>
       <h1>PARROT CARD GAME</h1>
@@ -33,6 +64,7 @@ function App() {
             handleChoice={handleChoice}
             card={card} 
             key={card.id}
+            flipped={card === choiceOne || card === choiceTwo || card.matched}
             />))} 
       </Deck>
     </Content>

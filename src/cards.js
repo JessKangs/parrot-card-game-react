@@ -7,13 +7,13 @@ import tripletsParrot from "./img/tripletsparrot.gif";
 import unicornParrot from "./img/unicornparrot.gif";
 
 const cardsImages = [
-    {"src": bobrossParrot},
-    {"src": explodyParrot},
-    {"src": fiestaParrot},
-    {"src": metalParrot},
-    {"src": revertitParrot},
-    {"src": tripletsParrot},
-    {"src": unicornParrot}
+    {"src": bobrossParrot, matched: false},
+    {"src": explodyParrot, matched: false},
+    {"src": fiestaParrot, matched: false},
+    {"src": metalParrot, matched: false},
+    {"src": revertitParrot, matched: false},
+    {"src": tripletsParrot, matched: false},
+    {"src": unicornParrot, matched: false}
 ]
 
 export default cardsImages
